@@ -8,8 +8,8 @@ function App() {
   const [inputCity, setInputCity] = useState('London'); // <input> text
   const [city, setCity]         = useState('London'); // triggers the fetch
 
-  const API_KEY = '9b214bd4d3044403b2f150651250106';
-  
+
+  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
 
 
@@ -69,6 +69,7 @@ function App() {
       {/* Weather */}
       {weather && !weather?.error && (
         <>
+          <img src={weather.current.condition.icon} alt="icon" />
           <h1>Weather in {weather.location.name}</h1>
           <h2>Current: {weather.current.temp_c}°C</h2>
           <h3>Currnt Time: {weather.location.localtime}</h3>
